@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Card from "./components/Card"
+import Navbar from "./components/Navbar"
+import data from "./data";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+export default function App(){
+  const cardElements = data.map(function(card){
+    return(
+      <Card 
+      key={card.id}
+      card={card}
+      />
+    )
+  })
+  //have to be in the order you want it to appear on the page
+  return(
+    <div>
+      <Navbar />
+      <section className="cards-flexbox">
+        {cardElements}
+      </section>
     </div>
-  );
+  )
 }
-
-export default App;
